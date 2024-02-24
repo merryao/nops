@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,7 +13,7 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-image: url('https://scontent.fxap1-2.fna.fbcdn.net/v/t1.18169-9/13707769_123222808114907_3527242721614050918_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=7a1959&_nc_eui2=AeE2MMuydRG0WYgZf8NmgSMQaMr2ttLYI8xoyva20tgjzC_9J4BMmL0x8yCcBqfe9tvmArVBdCEOQgWabh0Nifvo&_nc_ohc=9UjZt_l5vOIAX_jNdeh&_nc_ht=scontent.fxap1-2.fna&oh=00_AfDHoLYVpCURcHBY9UcktWsPzLlolVZOWnRltghRDeiefw&oe=6601DE36'); /* Substitua 'imagem.jpg' pelo caminho correto da sua imagem */
+        background-image: url('https://scontent.fxap1-2.fna.fbcdn.net/v/t1.18169-9/13707769_123222808114907_3527242721614050918_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=7a1959&_nc_eui2=AeE2MMuydRG0WYgZf8NmgSMQaMr2ttLYI8xoyva20tgjzC_9J4BMmL0x8yCcBqfe9tvmArVBdCEOQgWabh0Nifvo&_nc_ohc=9UjZt_l5vOIAX_jNdeh&_nc_ht=scontent.fxap1-2.fna&oh=00_AfDHoLYVpCURcHBY9UcktWsPzLlolVZOWnRltghRDeiefw&oe=6601DE36');
         background-size: cover;
         background-position: center;
     }
@@ -32,9 +31,25 @@
         border-radius: 5px;
         cursor: pointer;
         text-decoration: none;
+        transition: opacity 0.3s ease; /* Adicionando a transição suave */
     }
     .btn:hover {
-        background-color: #0056b3;
+        opacity: 0.5; /* Reduzindo a opacidade quando o mouse estiver sobre o botão */
+    }
+
+    /* Animação dos confetes */
+    @keyframes confetti {
+        0% { transform: translateY(0) rotate(0); }
+        100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    .confetti {
+        position: absolute;
+        width: 5px;
+        height: 15px;
+        background-color: #f00; /* Cor do confete */
+        border-radius: 2px;
+        animation: confetti 5s ease-out;
     }
 </style>
 </head>
@@ -42,8 +57,44 @@
     <h1>Parabéns QUER KIN NOF</h1>
     <a href="https://www.youtube.com/shorts/YIW-sb-dECQ?si=f0p18SFAvJmhljLs" class="btn">Link 1</a>
     <a href="https://www.youtube.com/shorts/1Zg_yHcfRwE" class="btn">Link 2</a>
+
+    <script>
+        // Função para mostrar os confetes
+        function showConfetti(event) {
+            // Verifica se o elemento clicado não é um link
+            if (event.target.tagName.toLowerCase() !== 'a') {
+                // Define o número de confetes a serem gerados
+                const numConfettis = 5;
+
+                // Cria os confetes
+                for (let i = 0; i < numConfettis; i++) {
+                    // Cria o elemento de confete
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+
+                    // Define a posição inicial do confete com base na posição do clique
+                    confetti.style.left = `${event.clientX}px`;
+                    confetti.style.top = `${event.clientY}px`;
+
+                    // Define uma rotação aleatória
+                    const randomRotation = Math.random() * 360;
+                    confetti.style.transform = `rotate(${randomRotation}deg)`;
+
+                    // Adiciona os confetes ao corpo do documento
+                    document.body.appendChild(confetti);
+                }
+
+                // Remove os confetes após a animação
+                setTimeout(() => {
+                    document.querySelectorAll('.confetti').forEach(confetti => {
+                        confetti.remove();
+                    });
+                }, 5000);
+            }
+        }
+
+        // Adiciona um ouvinte de clique ao corpo do documento
+        document.body.addEventListener('click', showConfetti);
+    </script>
 </body>
 </html>
-
-
-
