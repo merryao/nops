@@ -63,32 +63,24 @@
         function showConfetti(event) {
             // Verifica se o elemento clicado não é um link
             if (event.target.tagName.toLowerCase() !== 'a') {
-                // Define o número de confetes a serem gerados
-                const numConfettis = 5;
+                // Cria o elemento de confete
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                // Define a posição inicial do confete com base na posição do clique
+                confetti.style.left = `${event.clientX}px`;
+                confetti.style.top = `${event.clientY}px`;
 
-                // Cria os confetes
-                for (let i = 0; i < numConfettis; i++) {
-                    // Cria o elemento de confete
-                    const confetti = document.createElement('div');
-                    confetti.classList.add('confetti');
+                // Define uma rotação aleatória
+                const randomRotation = Math.random() * 360;
+                confetti.style.transform = `rotate(${randomRotation}deg)`;
 
-                    // Define a posição inicial do confete com base na posição do clique
-                    confetti.style.left = `${event.clientX}px`;
-                    confetti.style.top = `${event.clientY}px`;
-
-                    // Define uma rotação aleatória
-                    const randomRotation = Math.random() * 360;
-                    confetti.style.transform = `rotate(${randomRotation}deg)`;
-
-                    // Adiciona os confetes ao corpo do documento
-                    document.body.appendChild(confetti);
-                }
+                // Adiciona os confetes ao corpo do documento
+                document.body.appendChild(confetti);
 
                 // Remove os confetes após a animação
                 setTimeout(() => {
-                    document.querySelectorAll('.confetti').forEach(confetti => {
-                        confetti.remove();
-                    });
+                    confetti.remove();
                 }, 5000);
             }
         }
