@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parabéns QUER KIN NOF</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-image: url('caminho/para/sua/imagem.jpg'); /* Substitua 'caminho/para/sua/imagem.jpg' pelo caminho onde você salvou a imagem que deseja usar como fundo */
+        background-size: cover; /* Ajusta o tamanho da imagem para cobrir todo o elemento body */
+        background-position: center; /* Centraliza a imagem no elemento body */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    h1 {
+        font-size: 3em;
+        text-align: center;
+        color: #fff; /* Alterei a cor do texto para branco para melhorar a visibilidade */
+    }
+</style>
+</head>
+<body>
+    <h1>Parabéns QUER KIN NOF</h1>
+</body>
+</html>
+
