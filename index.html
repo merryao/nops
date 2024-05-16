@@ -31,13 +31,13 @@
         border-radius: 5px;
         cursor: pointer;
         text-decoration: none;
-        transition: opacity 0.3s ease; /* Adicionando a transição suave */
+        transition: opacity 0.3s ease; 
     }
     .btn:hover {
-        opacity: 0.5; /* Reduzindo a opacidade quando o mouse estiver sobre o botão */
+        opacity: 0.5; 
     }
 
-    /* Animação dos confetes */
+
     @keyframes confetti {
         0% { transform: translateY(0) rotate(0); }
         100% { transform: translateY(100vh) rotate(360deg); }
@@ -47,7 +47,7 @@
         position: absolute;
         width: 5px;
         height: 15px;
-        background-color: #f00; /* Cor do confete */
+        background-color: #f00; 
         border-radius: 2px;
         animation: confetti 5s ease-out;
     }
@@ -59,33 +59,33 @@
     <a href="https://www.youtube.com/shorts/1Zg_yHcfRwE" class="btn">Link 2</a>
 
     <script>
-        // Função para mostrar os confetes
+        
         function showConfetti(event) {
-            // Verifica se o elemento clicado não é um link
+          
             if (event.target.tagName.toLowerCase() !== 'a') {
                 // Cria o elemento de confete
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
                 
-                // Define a posição inicial do confete com base na posição do clique
+               
                 confetti.style.left = `${event.clientX}px`;
                 confetti.style.top = `${event.clientY}px`;
 
-                // Define uma rotação aleatória
+               
                 const randomRotation = Math.random() * 360;
                 confetti.style.transform = `rotate(${randomRotation}deg)`;
 
-                // Adiciona os confetes ao corpo do documento
+                
                 document.body.appendChild(confetti);
 
-                // Remove os confetes após a animação
+            
                 setTimeout(() => {
                     confetti.remove();
                 }, 5000);
             }
         }
 
-        // Adiciona um ouvinte de clique ao corpo do documento
+    
         document.body.addEventListener('click', showConfetti);
     </script>
 </body>
